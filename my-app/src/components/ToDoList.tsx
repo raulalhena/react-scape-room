@@ -24,7 +24,7 @@ export const ToDoList = () => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return
         }
-        setToDos(prev => prev.map(item => (item.id === toDoId ? newValue : item)))
+        setToDos(prev => prev.map(item => (item.id === id ? newValue : item)))
     }
 
   return (

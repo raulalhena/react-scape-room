@@ -23,8 +23,21 @@ export const ToDoForm = (props: Props) => {
 
     return (
         <form className= 'toDo-form' onSubmit={handleSubmit}>
-            <input type="text" placeholder='Add a to do' value={input} name='text' className='toDo-input' onChange={handleChange}/>
-            <button className='toDo-button'>Add something to do</button>
+            { props.edit ? 
+            (
+                <>
+                    <input type="text" placeholder='Update your item' value={input} name='text' className='toDo-input edit' onChange={handleChange}/>
+                    <button className='toDo-button'>Update</button>
+                </>
+            )
+            :
+            (
+                <>
+                    <input type="text" placeholder='Add a to do' value={input} name='text' className='toDo-input' onChange={handleChange}/>
+                    <button className='toDo-button'>Add something to do</button>
+                </>
+            )
+            }
         </form>
     )
 }
