@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TiEdit } from "react-icons/ti"
 import { RiCloseCircleLine } from "react-icons/ri"
 import { ToDoForm } from "./ToDoForm";
 
 export interface ToDo {
-    id: number;
+    id: string;
     text: string;
 }
 
 type Props = {
     toDos: Array<ToDo>,
-    removeToDo: () => void,
-    updateToDo: () => void
+    removeToDo: (id: string) => void,
+    updateToDo: (id: string, value: any) => void
 }
 
 export const ToDo = ({toDos, removeToDo, updateToDo}: Props) => {
-    const [edit, setEdit] = useState<ToDo | unknown>({id: null, value: ''});
+    const [edit, setEdit] = useState<ToDo | any>({id: null, value: ''});
 
-    const submitUpdate = (value) => {
+    const submitUpdate = (value: any) => {
         updateToDo(edit.id, value);
         setEdit({
             id: null,
@@ -26,6 +26,7 @@ export const ToDo = ({toDos, removeToDo, updateToDo}: Props) => {
     }
 
     if(edit.id) {
+        console.log('edit')
         return <ToDoForm edit={edit} onSubmit={submitUpdate} />
     }
 

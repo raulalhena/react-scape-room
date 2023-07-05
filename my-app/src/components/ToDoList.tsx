@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ToDoForm } from './ToDoForm'
 import { ToDo } from './ToDo';
 
 export const ToDoList = () => {
     const [toDos, setToDos] = useState(Array<ToDo>);
 
-    const addToDo = (toDo) => {
+    const addToDo = (toDo: ToDo) => {
         if(!toDo.text || /^\s*$/.test(toDo.text)){
             return;
         }
@@ -15,12 +15,12 @@ export const ToDoList = () => {
         console.log(newToDos);
     }
 
-    const removeToDo = (id) => {
+    const removeToDo = (id: string) => {
         const removeArr = [...toDos].filter(toDo => toDo.id !== id);
         setToDos(removeArr);
     }
 
-    const updateToDo = (id, newValue) => {
+    const updateToDo = (id: string, newValue: any) => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return
         }
@@ -30,7 +30,7 @@ export const ToDoList = () => {
   return (
     <>
       <h1>What's your plan for today</h1>
-      <ToDoForm onSubmit={addToDo}/>
+      <ToDoForm edit={null} onSubmit={addToDo}/>
       <ToDo toDos={toDos} removeToDo={removeToDo} updateToDo={updateToDo} />
     </>
   )
