@@ -3,4 +3,4 @@ F5 iniciación a React
 
 ## Desplegado en VERCEL
 
-[https://react-scape-room.vercel.app/] React scape room in Vercel 
+[React scape room in Vercel](https://react-scape-room.vercel.app/)
